@@ -7,6 +7,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 add_definitions(-D__KERNEL__ -DMODULE)
 
+# Choosing from those https://github.com/torvalds/linux/tree/master/arch, just for an include path
+set(TARGET_ARCH #[[arch]])
 set(SRCS #[[sources]])
 
 # Workaround for clion intellisense
@@ -31,6 +33,7 @@ message(STATUS "Kernel headers: ${KERNEL_HEADERS}")
 
 include_directories(
         ${KERNEL_HEADERS}/include
+        ${KERNEL_HEADERS}/arch/${TARGET_ARCH}/include
 )
 
 # Create symlinks of sources in build directory
